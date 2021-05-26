@@ -1,0 +1,10 @@
+@api = http://localhost:5000/api/v1
+
+
+### Get order by order id
+GET {{api}}/orders/1
+
+
+### Get order by user id
+GET {{api}}/orders/userid/1
+

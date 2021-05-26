@@ -1,0 +1,15 @@
+@api = http://localhost:5000/api/v1
+
+
+### Send user info in json to register
+POST {{api}}/signup/
+Content-Type: application/json
+
+{
+	"name": "juan",
+	"lastname": "perez",
+	"govid": "01",
+	"email": "juan@holberton.com",
+  "company": "Juanito INC",
+	"password": "123"
+}

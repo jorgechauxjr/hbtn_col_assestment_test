@@ -1,0 +1,11 @@
+@api = http://localhost:5000/api/v1
+
+
+### Send email and password in json to login
+POST {{api}}/login/
+Content-Type: application/json
+
+{
+	"email": "betty@email.com",
+	"password": "123"
+}
