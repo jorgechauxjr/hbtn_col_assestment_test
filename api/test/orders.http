@@ -2,7 +2,7 @@
 
 
 ### Get order by order id
-GET {{api}}/orders/1
+GET {{api}}/orders/3
 
 
 ### Get order by user id
