@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, flash, jsonify
+from flask import jsonify
 from app import mysql
 from api.v1.views import app_views
 
@@ -13,4 +13,3 @@ def get_all_users():
     #data receives a tuple of tuple
     data = cur.fetchall()
     return jsonify(data)
-

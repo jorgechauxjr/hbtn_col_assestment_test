@@ -2,9 +2,10 @@
 
 
 ### Get order by order id
-GET {{api}}/orders/3
+GET {{api}}/orders/1
 
+### Get orders by user ordersi
+GET {{api}}/orders/ordersid/12,11,10
 
 ### Get order by user id
 GET {{api}}/orders/userid/1
-
