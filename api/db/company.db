@@ -6,6 +6,7 @@ USE companydb;
 
 -- create tables
 
+-- users table
 CREATE TABLE IF NOT EXISTS users (userid INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 name VARCHAR(20),
 lastname VARCHAR(20),
@@ -14,6 +15,8 @@ email VARCHAR(20),
 company VARCHAR(20),
 password VARCHAR(20));
 
+-- shipping table
+
 CREATE TABLE IF NOT EXISTS shipping (shippingid INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 address VARCHAR(20),
 city VARCHAR(20),
@@ -21,12 +24,16 @@ state VARCHAR(20),
 country VARCHAR(20),
 cost INT);
 
+-- payment table
+
 CREATE TABLE IF NOT EXISTS payment (paymentid INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 type VARCHAR(20),
 date DATE,
 txnid INT, 
 total INT,
 status BOOLEAN);
+
+-- orders table
 
 CREATE TABLE IF NOT EXISTS orders (orderid INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 date DATE,
@@ -72,3 +79,10 @@ INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,payme
 INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-11-09", "350", "250", "100", TRUE, "5", "5", "5");
 INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-12-09", "350", "250", "100", TRUE, "6", "6", "6");
 INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-05-17", "120", "150", "12", TRUE, "1", "1", "1");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2018-11-22", "1350", "2350", "1500", TRUE, "3", "4", "1");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2017-10-22", "50", "2530", "1010", FALSE, "5", "1", "2");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2017-05-13", "22", "2570", "105", FALSE, "2", "3", "3");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2018-03-25", "32", "2510", "1070", FALSE, "7", "2", "4");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2011-11-13", "4750", "2350", "1700", TRUE, "4", "6", "5");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2014-12-09", "854", "2450", "1800", TRUE, "2", "5", "6");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2013-05-17", "945", "5150", "192", TRUE, "1", "1", "1");
