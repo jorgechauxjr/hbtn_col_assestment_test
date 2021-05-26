@@ -1,0 +1,74 @@
+-- create database
+
+
+CREATE DATABASE IF NOT EXISTS companydb;
+USE companydb;
+
+-- create tables
+
+CREATE TABLE IF NOT EXISTS users (userid INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+name VARCHAR(20),
+lastname VARCHAR(20),
+govid VARCHAR(20), 
+email VARCHAR(20),
+company VARCHAR(20),
+password VARCHAR(20));
+
+CREATE TABLE IF NOT EXISTS shipping (shippingid INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+address VARCHAR(20),
+city VARCHAR(20),
+state VARCHAR(20), 
+country VARCHAR(20),
+cost INT);
+
+CREATE TABLE IF NOT EXISTS payment (paymentid INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+type VARCHAR(20),
+date DATE,
+txnid INT, 
+total INT,
+status BOOLEAN);
+
+CREATE TABLE IF NOT EXISTS orders (orderid INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+date DATE,
+total INT, 
+subtotal INT,
+taxes INT,
+paid BOOLEAN,
+userid INT,
+shippingid INT,
+paymentid INT,
+FOREIGN KEY (userid) REFERENCES users(userid),
+FOREIGN KEY (shippingid) REFERENCES shipping(shippingid),
+FOREIGN KEY (paymentid) REFERENCES payment(paymentid)
+);
+
+-- Insert data to tables
+
+INSERT INTO users (name, lastname, govid, email, company, password) VALUES ("Alan", "Agora", "2", "alan@email.com", "apple", "123");
+INSERT INTO users (name, lastname, govid, email, company, password) VALUES ("Betty", "Holberton", "3", "betty@email.com", "Holberton School", "123");
+INSERT INTO users (name, lastname, govid, email, company, password) VALUES ("Dennis", "Ritchie", "1", "dennis@email.com", "apple", "123");
+INSERT INTO users (name, lastname, govid, email, company, password) VALUES ("Steve", "Jobs", "4", "steve@email.com", "apple", "123");
+INSERT INTO users (name, lastname, govid, email, company, password) VALUES ("Elon", "Musk", "5", "elon@email.com", "Tesla", "123");
+INSERT INTO users (name, lastname, govid, email, company, password) VALUES ("Julien", "Barbier", "3", "julien@email.com", "Holberton School", "123");
+
+INSERT INTO shipping (address, city, state, country, cost) VALUES ("42 Avenue", "Manhattan", "New York", "USA", "200");
+INSERT INTO shipping (address, city, state, country, cost) VALUES ("50 Avenue", "Miami", "Florida", "USA", "10");
+INSERT INTO shipping (address, city, state, country, cost) VALUES ("23 Avenue", "Orlando", "Florida", "USA", "120");
+INSERT INTO shipping (address, city, state, country, cost) VALUES ("142 Avenue", "San Francisco", "California", "USA", "100");
+INSERT INTO shipping (address, city, state, country, cost) VALUES ("542 Avenue", "Los Angeles", "California", "USA", "15");
+INSERT INTO shipping (address, city, state, country, cost) VALUES ("245 Avenue", "Townsend", "Tennesssee", "USA", "32");
+
+INSERT INTO payment (type, date, txnid, total, status) VALUES ("CreditCard", "2020-10-30", "1", "3000", TRUE);
+INSERT INTO payment (type, date, txnid, total, status) VALUES ("PayPal", "2020-09-09", "2", "2500", FALSE);
+INSERT INTO payment (type, date, txnid, total, status) VALUES ("PayPal", "2020-01-30", "3", "1500", TRUE);
+INSERT INTO payment (type, date, txnid, total, status) VALUES ("CreditCard", "2020-06-12", "4", "2000", FALSE);
+INSERT INTO payment (type, date, txnid, total, status) VALUES ("PayPal", "2020-02-02", "5", "3200", TRUE);
+INSERT INTO payment (type, date, txnid, total, status) VALUES ("CreditCard", "2020-07-27", "6", "5000", FALSE);
+
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-09-09", "350", "250", "100", TRUE, "1", "1", "1");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-10-09", "350", "250", "100", FALSE, "2", "2", "2");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-05-09", "350", "250", "100", FALSE, "3", "3", "3");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-03-09", "350", "250", "100", FALSE, "4", "4", "4");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-11-09", "350", "250", "100", TRUE, "5", "5", "5");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-12-09", "350", "250", "100", TRUE, "6", "6", "6");
+INSERT INTO orders (date, total, subtotal, taxes, paid, userid, shippingid,paymentid) VALUES ("2019-05-17", "120", "150", "12", TRUE, "1", "1", "1");
