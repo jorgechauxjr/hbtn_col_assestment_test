@@ -6,10 +6,10 @@ POST {{api}}/signup/
 Content-Type: application/json
 
 {
-	"name": "juan",
-	"lastname": "perez",
-	"govid": "01",
-	"email": "juan@holberton.com",
+	"name": "Mariana",
+	"lastname": "Lopez",
+	"govid": "05",
+	"email": "mari@email.com",
   "company": "Juanito INC",
 	"password": "123"
 }

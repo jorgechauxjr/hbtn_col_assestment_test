@@ -2,3 +2,4 @@
 
 ### Get all users
 GET {{api}}/users/all
+x-auth-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImJldHR5QGVtYWlsLmNvbSJ9.3sFcNmL-V3M5X02P6nvj9OQ5IvbiXXF3OIL4b4xwfrs

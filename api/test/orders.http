@@ -3,9 +3,12 @@
 
 ### Get order by order id
 GET {{api}}/orders/1
+x-auth-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImJldHR5QGVtYWlsLmNvbSJ9.3sFcNmL-V3M5X02P6nvj9OQ5IvbiXXF3OIL4b4xwfrs
 
 ### Get orders by user ordersi
 GET {{api}}/orders/ordersid/12,11,10
+x-auth-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImJldHR5QGVtYWlsLmNvbSJ9.3sFcNmL-V3M5X02P6nvj9OQ5IvbiXXF3OIL4b4xwfrs
 
 ### Get order by user id
 GET {{api}}/orders/userid/1
+x-auth-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImJldHR5QGVtYWlsLmNvbSJ9.3sFcNmL-V3M5X02P6nvj9OQ5IvbiXXF3OIL4b4xwfrs
