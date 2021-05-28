@@ -16,6 +16,16 @@ def valid_token(encoded_jwt):
     except:
         return False
 
+def dictOrders(info):
+    orderInfoDict = {
+        "orderdate": info[1],
+        "ordertotal": info[2],
+        "ordersubtotal": info[3],
+        "ordertaxes": info[4],
+        "orderpaid": info[5]
+    }
+    return orderInfoDict
+
 # app_views variable created in api.v1.views __init.py__
 # app_views value is api/v1 
 @app_views.route('/orders/<id>')
@@ -29,7 +39,11 @@ def get_order_by_id(id):
         cur.execute('SELECT * FROM orders WHERE orderid = %s;', [id])
         #data receives a tuple of tuple
         data = cur.fetchall()
-        return jsonify(data)
+        myOrder = []
+        for arrOrderData in data:
+            theOrder = dictOrders(arrOrderData)
+            myOrder.append(theOrder)
+        return jsonify(myOrder)
         """
         return jsonify({
             "orderid": data[0][0],
@@ -56,12 +70,19 @@ def get_orders_by_orderid(orders_id):
         twoDigitid = ""
         count = 0
 
+        allOrders = []
+
         for c in strIds:
             if c is ",":
                 count = count + 1
                 cur.execute('SELECT * FROM orders WHERE orderid = %s;', [twoDigitid])
                 #data receives a tuple of tuple
                 data = cur.fetchall()
+                
+                for arrOrderData in data:
+                    theOrder = dictOrders(arrOrderData)
+                    allOrders.append(theOrder)
+
                 arrIds.append(data[0])
                 twoDigitid = ""
                 continue
@@ -71,8 +92,14 @@ def get_orders_by_orderid(orders_id):
                 cur.execute('SELECT * FROM orders WHERE orderid = %s;', [twoDigitid])
                 #data receives a tuple of tuple
                 data = cur.fetchall()
+
+                for arrOrderData in data:
+                    theOrder = dictOrders(arrOrderData)
+                    allOrders.append(theOrder)
+
                 arrIds.append(data[0])
-        return jsonify(arrIds)
+        # return jsonify(arrIds)
+        return jsonify(allOrders)
     return jsonify("INVALID TOKEN")
 
 # Get all orders by userId
@@ -83,9 +110,13 @@ def get_order_by_userid(user_id):
     isValid = valid_token(token)
 
     if(isValid):
+        allOrders = []
         cur = mysql.connection.cursor()
         cur.execute('SELECT * FROM orders WHERE userid = %s;', [user_id])
         #data receives a tuple of tuple
         data = cur.fetchall()
-        return jsonify(data)
+        for ordersInfo in data:
+            theOrder = dictOrders(ordersInfo)
+            allOrders.append(theOrder)
+        return jsonify(allOrders)
     return jsonify("INVALID TOKEN")
