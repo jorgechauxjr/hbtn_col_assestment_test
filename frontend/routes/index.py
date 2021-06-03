@@ -1,11 +1,55 @@
-from flask import render_template, jsonify, request
+from flask import render_template, jsonify, request, session, redirect
 from . import routes
 import requests
 
-@routes.route('/')
+@routes.route('/', methods=['POST', 'GET'])
 def home():
+    if (request.method == 'POST'):
+        email = request.form['logemail']
+        psw = request.form['logPassword']
+        # email coincidir con el de auth.py
+        data = requests.post('http://localhost:5000/api/v1/login/', json={ 'email': email, 'password': psw })
+        
+        if (data.status_code == 200):
+            data = data.json()
+            # print("======", data)
+            session['savedToken'] = data.get('TOKEN')
+            # print("GET TOKEN)==", data.get('TOKEN'))
+            return redirect('/users')
+
+        # print(request.form['logemail'])
+        # print(request.form['logPassword'])
+        # print("======", data)
     return render_template('index.html')
 
 @routes.route('/signup')
 def signup():
     return render_template('signup.html')
+
+@routes.route('/signupinfo', methods=['POST'])
+def signupInfo():
+    if request.method == 'POST':
+
+        userInfo = {
+        "name": request.form['signName'],
+        "lastname": request.form['signLastname'],
+        "govid": request.form['signGovid'],
+        "email": request.form['signEmail'],
+        "company": request.form['signCompany'],
+        "password": request.form['signPassword']
+        }
+        """
+        name = request.form['signName']
+        lastname = request.form['signLastname']
+        govid = request.form['signGovid']
+        email = request.form['signEmail']
+        company = request.form['signCompany']
+        password = request.form['signPassword']
+        """
+        data = requests.post('http://localhost:5000/api/v1/signup/', json=userInfo)
+        if data.status_code == 200:
+            data = data.json()
+            print("=============DATA======", data)
+            return redirect('/')
+            # print("====REGISTERED SUCCESSFULLY")
+        return redirect(url_for('Index'))

@@ -36,6 +36,6 @@ def login():
 
     if (exist == 1):
         encoded_jwt = jwt.encode({"email": useremail}, "secret", algorithm="HS256")
-        return jsonify({"TOKEN:": encoded_jwt})  
+        return jsonify({"TOKEN": encoded_jwt})  
 
     return jsonify("NO EXIST")

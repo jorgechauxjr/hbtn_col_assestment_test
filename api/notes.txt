@@ -1,0 +1,17 @@
+ModuleNotFoundError: No module named 'api'
+export PYTHONPATH="${PYTHONPATH}: salida del pwd " 
+Ej:
+export PYTHONPATH="${PYTHONPATH}:/home/jchaux/hbtn_col_assestment_test"
+export PYTHONPATH="${PYTHONPATH}:"
+pwd
+
+sql
+sudo mysql -u root
+error  
+sudo pkill mysql
+sudo pkill mysqld
+sudo service mysql restart
+mysql -u root
+
+
+

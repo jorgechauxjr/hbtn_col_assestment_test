@@ -18,9 +18,9 @@
         {% for contact in data_one %}
         <tr>
           <td>{{ contact.get("orderdate") }}</td>
-          <td>{{ contact.get("ordertotal") }}</td>
-          <td>{{ contact.get("ordersubtotal") }}</td>
-          <td>{{ contact.get("ordertaxes") }}</td>
+          <td>USD {{ contact.get("ordertotal") }}</td>
+          <td>USD {{ contact.get("ordersubtotal") }}</td>
+          <td>USD {{ contact.get("ordertaxes") }}</td>
           <td>{{ contact.get("orderpaid") }}</td>
         </tr>
         {% endfor %}

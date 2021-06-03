@@ -4,4 +4,3 @@ routes = Blueprint('routes', __name__)
 from .index import *
 from .users import *
 from .orders import *
-from .login import *
