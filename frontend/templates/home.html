@@ -4,33 +4,31 @@
 {% block body %}
 
 <div class="card card-body">
-  <form action="/add_contact" method="POST">
+  <form action="/home" method="POST">
     <div class="form-group">
       <p>Please select the best option for your query:</p>
-      <input type="radio" name="users" value="allusers">
+      <input type="radio" name="queryOption" value="allUsers" checked>
       <label for="male">Get all Users</label><br>
     </div>
 
     <div class="form-group">
-      <input type="radio" name="orderById" value="orderId">
+      <input type="radio" name="queryOption" value="orderById">
       <label for="female">Get order info by: Order Id</label>
-      <input type="text" name="fullname" placeholder="Order Id"
+      <input type="text" name="orderId" placeholder="Order Id"
       class="form-control-sm"><br>
     </div>
 
-    
-
     <div class="form-group">
-      <input type="radio" name="multOrdersById" value="ordersById">
+      <input type="radio" name="queryOption" value="ordersById">
       <label for="other">Get multiple orders information by: Orders Id separated by comma. Ex:</label>
-      <input type="text" name="fullname" placeholder="2,5,7"
+      <input type="text" name="ordersByComma" placeholder="2,5,7"
       class="form-control-sm"><br>
     </div>
 
     <div class="form-group">
-      <input type="radio" name="ordersByUserId" value="userOrders">
+      <input type="radio" name="queryOption" value="userOrders">
       <label for="other">Get multiple orders information by: User Id</label>
-      <input type="text" name="fullname" placeholder="User Id"
+      <input type="text" name="userId" placeholder="User Id"
       class="form-control-sm"><br>
     </div>
 

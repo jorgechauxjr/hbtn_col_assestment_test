@@ -4,5 +4,17 @@ import requests
 
 @routes.route('/home', methods=['POST', 'GET'])
 def home():
-    
-    return render_template('home.html')
+    if (request.method == 'POST'):
+        optionSelected = request.form['queryOption']
+        if optionSelected == 'allUsers':
+            return redirect('/users')
+        elif optionSelected == 'orderById':
+            #orderId es el name en el form de home.html
+            order_id = request.form['orderId']
+            return redirect('/order/{}'.format(order_id))
+        elif optionSelected == 'ordersById':
+            orders = request.form['ordersByComma']
+            return redirect('/orders/ordersid/{}'.format(orders))
+        elif optionSelected == 'userOrders':
+            user_id = request.form['userId']
+            return redirect('/orders/userid/{}'.format(user_id))
