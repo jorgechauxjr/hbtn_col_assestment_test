@@ -3,7 +3,7 @@ from . import routes
 import requests
 
 @routes.route('/', methods=['POST', 'GET'])
-def home():
+def login():
     if (request.method == 'POST'):
         email = request.form['logemail']
         psw = request.form['logPassword']

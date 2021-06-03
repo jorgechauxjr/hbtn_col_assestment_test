@@ -13,5 +13,6 @@ sudo pkill mysqld
 sudo service mysql restart
 mysql -u root
 
-
+OJO al crear cada archivo .py de rutas
+agregarlo al __init__.py
 
