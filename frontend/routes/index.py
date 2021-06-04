@@ -4,6 +4,7 @@ import requests
 
 @routes.route('/', methods=['POST', 'GET'])
 def login():
+
     if (request.method == 'POST'):
         email = request.form['logemail']
         psw = request.form['logPassword']
@@ -12,14 +13,13 @@ def login():
         
         if (data.status_code == 200):
             data = data.json()
-            # print("======", data)
             session['savedToken'] = data.get('TOKEN')
-            # print("GET TOKEN)==", data.get('TOKEN'))
-            return redirect('/users')
-
-        # print(request.form['logemail'])
-        # print(request.form['logPassword'])
-        # print("======", data)
+            return redirect('/home')
+        print("CORREO O USUARIO INVALIDO!!!!!")
+        return redirect('/')
+        
+    # cerrar sesión
+    session.clear()
     return render_template('index.html')
 
 @routes.route('/signup')
