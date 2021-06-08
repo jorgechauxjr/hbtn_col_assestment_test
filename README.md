@@ -75,3 +75,6 @@ Or if you prefer you can go to the Signup page to register with your own user in
 
 ### Authors
 * Jorge Chaux Jr | [GitHub](https://github.com/jorgechauxjr) |
+
+### Creator of the hbtn assessment test
+* Carlos Cárdenas | [GitHub](https://github.com/carcagi) |
